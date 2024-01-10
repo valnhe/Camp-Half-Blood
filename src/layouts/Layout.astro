@@ -1,4 +1,8 @@
 ---
+import '@fontsource-variable/playfair-display';
+import '@fontsource-variable/signika-negative';
+import '@fontsource/fjalla-one';
+
 interface Props {
 	title: string;
 }
@@ -20,32 +24,40 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
+
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+
+	@font-face {
+	font-family: 'Dalek';
+	src: url('/fonts/Dalek.ttf');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 	}
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		background-color: #F7F3EF;
+		font-family: 'Signika Negative Variable', sans-serif;
+		scroll-behavior: smooth;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	h1, h2 {
+		font-family: 'Dalek', sans-serif;
 	}
+
+	#header-nav {
+    animation: blur linear both;
+    animation-timeline: scroll();
+    animation-range: 0 500px;
+  }
+
+  @keyframes blur {
+    to {
+      box-shadow:
+        0px 5px 50px -5px rgba(0, 0, 0, 0.1),
+        0px 0px 0 1px rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+  }
+
 </style>
